@@ -1,4 +1,742 @@
 /* 
- This CSS file is used to override the existing styles of the theme.
- You can change the article headings, fonts, colors, etc.
+  TATpro Services — Custom Styles
+  Responsive improvements for PC, Tablet, and Mobile
 */
+
+/* ============================================
+   CSS Variables / Design Tokens
+   ============================================ */
+:root {
+  --primary: #1a1a2e;
+  --primary-light: #16213e;
+  --accent: #e94560;
+  --accent-hover: #c73850;
+  --surface: #f8f9fa;
+  --surface-alt: #edf2f7;
+  --text: #2d3748;
+  --text-muted: #718096;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+  --radius: 8px;
+  --radius-lg: 16px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Global Refinements
+   ============================================ */
+body {
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth page-wide transitions */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   Header / Navbar Improvements
+   ============================================ */
+header nav {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 800;
+  transition: box-shadow var(--transition);
+}
+
+header nav:hover {
+  box-shadow: var(--shadow-md);
+}
+
+header nav a {
+  text-decoration: none !important;
+  transition: color var(--transition), opacity var(--transition);
+}
+
+.nav-link {
+  text-decoration: none !important;
+  color: var(--primary) !important;
+  font-weight: 500;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+  background-color: rgba(233, 69, 96, 0.08);
+}
+
+/* Logo rounded & size constrained */
+header nav img {
+  height: 3.5rem !important;
+  max-height: 56px !important;
+  width: auto !important;
+  border-radius: var(--radius);
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+header nav img:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   Overlay Menu Enhancement
+   ============================================ */
+#overlay ul li a {
+  transition: transform var(--transition), opacity var(--transition);
+  display: inline-block;
+}
+
+#overlay ul li a:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* ============================================
+   Slider / Carousel Enhancements
+   ============================================ */
+.swiper-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #010915;
+  height: 66.67vw;
+  max-height: 50vh;
+}
+
+@media (min-width: 768px) {
+  .swiper-container {
+    height: 66.67vw;
+    max-height: 65vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .swiper-container {
+    height: 66.67vw;
+    max-height: 75vh;
+  }
+}
+
+@media (min-width: 1440px) {
+  .swiper-container {
+    max-height: 80vh;
+  }
+}
+
+.swiper-slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #010915;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background-color: #010915;
+}
+
+.swiper-slide.slide-cover img {
+  object-fit: cover;
+}
+
+/* Gradient overlay only for photo slides with titles */
+.swiper-slide:not(.slide-contain)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5));
+  pointer-events: none;
+}
+
+.swiper-slide .s-fade-txt {
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.swiper-slide .s-fade-txt h1 {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   Hero / Features Section Enhancement
+   ============================================ */
+.bg-tlgray-200 {
+  background: var(--surface) !important;
+}
+
+.bg-tlgray-200 .bg-white {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.bg-tlgray-200 .bg-white:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.bg-tlgray-200 .bg-white h2 {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.bg-tlgray-200 .bg-white .sans {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ============================================
+   Blog Summary Cards — Responsive
+   ============================================ */
+.sans.w-full {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: white;
+}
+
+.sans.w-full:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Fix inconsistent borders on mobile */
+.sans.w-full > div {
+  border: none !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+@media (min-width: 1024px) {
+  .sans.w-full > div {
+    border-top: none !important;
+    border-left: 1px solid var(--border) !important;
+  }
+}
+
+.sans.w-full .text-xl {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ============================================
+   Product Summary Cards
+   ============================================ */
+.summary.border {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border) !important;
+  padding: 2rem !important;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary.border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.summary.border:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent) !important;
+}
+
+.summary.border:hover::before {
+  opacity: 1;
+}
+
+.summary.border h2 {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.summary.border p {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.7;
+}
+
+/* ============================================
+   Contact Form Enhancement
+   ============================================ */
+form[name="contact"] {
+  max-width: 640px;
+}
+
+form[name="contact"] .input {
+  margin-bottom: 0.25rem;
+}
+
+form[name="contact"] input[type="text"],
+form[name="contact"] textarea {
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  font-size: 1rem;
+  padding: 0.875rem 1rem !important;
+}
+
+form[name="contact"] input[type="text"]:focus,
+form[name="contact"] textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+}
+
+form[name="contact"] input[type="submit"] {
+  border-radius: var(--radius);
+  background: var(--primary) !important;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 0.875rem 2.5rem !important;
+  transition: background var(--transition), transform var(--transition);
+  border: none;
+}
+
+form[name="contact"] input[type="submit"]:hover {
+  background: var(--accent) !important;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Footer Improvements
+   ============================================ */
+footer .bg-gray-800 {
+  background: var(--primary) !important;
+}
+
+footer .copy {
+  background: var(--primary-light) !important;
+  font-size: 0.875rem;
+}
+
+/* Mobile footer spacing */
+@media (max-width: 1023px) {
+  footer .bg-gray-800 {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  footer .flex-row {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   Content / Prose Enhancements
+   ============================================ */
+.content h2 {
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.content h3 {
+  color: var(--primary-light);
+  font-weight: 600;
+}
+
+.content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.content a:hover {
+  color: var(--accent-hover);
+}
+
+.content ul {
+  line-height: 1.8;
+}
+
+.content hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+/* ============================================
+   Blog Single Page
+   ============================================ */
+.title {
+  color: var(--primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Share buttons rounded */
+.share-button {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ============================================
+   Pagination Enhancement
+   ============================================ */
+.page-link {
+  border-radius: var(--radius) !important;
+  margin: 0 0.25rem;
+  transition: all var(--transition);
+}
+
+/* ============================================
+   Scroll Animations
+   ============================================ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.stagger-children > *.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   Blog "All Posts" Button
+   ============================================ */
+.bg-tlgray-800 {
+  border-radius: var(--radius);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.bg-tlgray-800:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   Mobile-First Responsive Adjustments
+   ============================================ */
+
+/* Mobile: <768px */
+@media (max-width: 767px) {
+  header nav {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .title.text-5xl {
+    font-size: 1.75rem !important;
+    line-height: 1.3;
+  }
+  
+  .text-4xl {
+    font-size: 1.5rem !important;
+  }
+
+  .mx-auto.my-10.max-w-6xl {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .share.grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Swiper text size on mobile */
+  .swiper-slide .s-fade-txt h1 {
+    font-size: 1.25rem !important;
+  }
+  
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 1.25rem !important;
+  }
+
+  /* Blog section heading */
+  .text-4xl.ml-2 {
+    margin-left: 0.5rem !important;
+  }
+}
+
+/* Tablet: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .title.text-5xl {
+    font-size: 2.5rem !important;
+  }
+  
+  .share.grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ============================================
+   Scroll-to-Top Button Enhancement
+   ============================================ */
+.scroll-top {
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  opacity: 0.9;
+}
+
+.scroll-top:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   Selection Highlight
+   ============================================ */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  header, footer, .scroll-top, .swiper-container, .share {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+  }
+}
+
+/* ============================================
+   Language Switcher
+   ============================================ */
+.lang-switcher {
+  border-left: 1px solid var(--border);
+  padding-left: 1.25rem;
+}
+
+.lang-btn {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+}
+
+.lang-btn:hover {
+  color: var(--primary);
+  border-color: var(--border);
+}
+
+.lang-btn-active {
+  background: var(--accent) !important;
+  color: white !important;
+  border-color: var(--accent) !important;
+}
+
+/* Mobile overlay lang toggle */
+.lang-toggle-overlay {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+
+.lang-toggle-overlay.lang-active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* ============================================
+   Product Cards (summary.html)
+   ============================================ */
+.product-card {
+  border-color: var(--border);
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   Product Single Page
+   ============================================ */
+.product-single {
+  padding-top: 2rem;
+}
+
+.product-hero {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.product-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Spec cards */
+.spec-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.spec-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Pricing table */
+.pricing-card {
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pricing-row {
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-row:last-child {
+  border-bottom: none;
+}
+
+.pricing-label {
+  padding: 1rem 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  width: 60%;
+  vertical-align: top;
+  padding-right: 1rem;
+}
+
+.pricing-value {
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+  text-align: right;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Benefits */
+.benefits-card {
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+}
+
+.benefits-list li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Contact CTA block */
+.contact-cta {
+  background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Prev/next navigation */
+.prev-next-link {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.prev-next-link:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   Accommodation Coming Soon Section
+   ============================================ */
+.accommodation-teaser {
+  background: linear-gradient(180deg, #f8f9fa 0%, #edf2f7 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   Footer Enhancements
+   ============================================ */
+.footer-main {
+  color: var(--text-muted);
+}
+
+.footer-main a {
+  transition: color 0.2s ease;
+}

@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Categories on TATpro Services</title>
-    <link>https://TATpro-Services.github.io/categories/</link>
-    <description>Recent content in Categories on TATpro Services</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <atom:link href="https://TATpro-Services.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on TATpro Services</title><link>https://TATpro-Services.github.io/categories/</link><description>Recent content in Categories on TATpro Services</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0700</lastBuildDate><atom:link href="https://TATpro-Services.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Car Reviews</title><link>https://TATpro-Services.github.io/categories/car-reviews/</link><pubDate>Mon, 10 Aug 2026 09:00:00 +0700</pubDate><guid>https://TATpro-Services.github.io/categories/car-reviews/</guid><description/></item><item><title>Family Travel</title><link>https://TATpro-Services.github.io/categories/family-travel/</link><pubDate>Mon, 10 Aug 2026 09:00:00 +0700</pubDate><guid>https://TATpro-Services.github.io/categories/family-travel/</guid><description/></item><item><title>City Travel</title><link>https://TATpro-Services.github.io/categories/city-travel/</link><pubDate>Sat, 08 Aug 2026 09:00:00 +0700</pubDate><guid>https://TATpro-Services.github.io/categories/city-travel/</guid><description/></item><item><title>Road Trips</title><link>https://TATpro-Services.github.io/categories/road-trips/</link><pubDate>Wed, 05 Aug 2026 09:00:00 +0700</pubDate><guid>https://TATpro-Services.github.io/categories/road-trips/</guid><description/></item></channel></rss>
